@@ -1,0 +1,276 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: title   start ]
+2D és 3D animációk
+   [wxMaxima: title   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+contour_plot(x^2+(y-(x^2)^(1/3))^2-1, [x,-1,1],[y,1,3],[legend,false]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+plot2d([contour,x^2+(y-(x^2)^(1/3))^2-1],[x,-1,1],[y,1,3]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+load(draw)$
+wxdraw3d(
+    explicit(x^2+(y-x^(2/3))^2-1,x,-1.015,1.0175,y,-1,3),
+    contour=map,
+    contour_levels=15
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+load(draw)$
+wxdraw3d(
+    enhanced3d=true,
+    explicit(x^2+(y-x^(2/3))^2-1,x,-1,1,y,-1,3),
+    contour=surface,
+    contour_levels=15,
+    view=[0,0]
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+with_slider_draw(f,makelist(0.1*i,i,1,10),
+    makelist(parametric((f+i)*cos(t),(f+i)*sin(t),t,0,2*%pi),i,0,13),
+    grid=true,
+    xrange= [-10,10],
+    yrange=[-10,10],
+    proportional_axes='xy),
+wxanimate_framerate=10;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+with_slider_draw3d(
+    f,makelist(2*%pi*i/ 20,i,1,20),
+    enhanced3d=true,
+    explicit(sin(x+f)*cos(y-f),x,-2*%pi,2*%pi,y,-2*%pi,2*%pi),
+    xrange=[-2*%pi,2*%pi],
+    yrange=[-2*%pi,2*%pi],
+    proportional_axes='xyz),
+wxanimate_framerate=10;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: title   start ]
+Deriválás, integrálás
+   [wxMaxima: title   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Deriválás
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+with_slider_draw(
+    f,makelist(%pi*2*i/100,i,0,100),
+    nticks=100,line_width=20,
+    nticks=100, color=green, parametric(cos(t),sin(t)*cos(t),t,-%pi/2+f,%pi/ 2+f),
+    nticks=100, color=black, parametric(cos(t),sin(t)*cos(t),t,%pi/2+f,3*%pi/ 2+f)
+), wxanimate_framerate=100$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+f(x):=sqrt(x^2+2);
+diff(f(x),x);
+diff(diff(f(x),x),x);
+diff(f(x),x,10);
+diff(sqrt(x+y^2),x,1,y,2);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+f(z,t):=cos(z*t^2+phi(t,z));
+diff(f(z,t),t);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+depends(x,t);
+depends(y,[z,t]);
+depends([a,b,c],[x,y,z]);
+dependencies;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+diff(x^2*y*z);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Integrálás
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+f(x):=4*x^3+3;
+integrate(f(x)=0,x);
+integrate(f(x),x,0,4);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+integrate(%e^(-x^2),x,minf,inf);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+f(x):=(x^a)/((x+1)^(5/2));
+integrate(f(x),x,0,inf);
+/* [wxMaxima: input   end   ] */
+/* [wxMaxima: question  start ] */
+<math><st>Is </st><mi lisp="*var-tag*">a</mi><st> an </st><mi lisp="*var-tag*">integer</mi><st>?</st></math>
+/* [wxMaxima: question  end   ] */
+/* [wxMaxima: answer  start ] */
+yes;
+/* [wxMaxima: answer  end   ] */
+/* [wxMaxima: question  start ] */
+<math><st>Is </st><mn>2</mn><h>*</h><mi lisp="*var-tag*">a</mi><mo>-</mo><mn>3</mn><st> positive, negative or zero?</st></math>
+/* [wxMaxima: question  end   ] */
+/* [wxMaxima: answer  start ] */
+neg;
+/* [wxMaxima: answer  end   ] */
+/* [wxMaxima: question  start ] */
+<math><st>Is </st><mi lisp="*var-tag*">a</mi><st> positive, negative or zero?</st></math>
+/* [wxMaxima: question  end   ] */
+/* [wxMaxima: answer  start ] */
+0;
+/* [wxMaxima: answer  end   ] */
+/* [wxMaxima: question  start ] */
+<math><st>Is </st><mi lisp="*var-tag*">a</mi><mo>+</mo><mn>1</mn><st> positive, negative or zero?</st></math>
+/* [wxMaxima: question  end   ] */
+/* [wxMaxima: answer  start ] */
+pos;
+/* [wxMaxima: answer  end   ] */
+/* [wxMaxima: question  start ] */
+<math><st>Is </st><mn>2</mn><h>*</h><mi lisp="*var-tag*">a</mi><mo>+</mo><mn>1</mn><st> positive, negative or zero?</st></math>
+/* [wxMaxima: question  end   ] */
+/* [wxMaxima: answer  start ] */
+pos;
+/* [wxMaxima: answer  end   ] */
+/* [wxMaxima: question  start ] */
+<math><st>Is </st><mi lisp="*var-tag*">a</mi><mo>-</mo><mn>1</mn><st> positive, negative or zero?</st></math>
+/* [wxMaxima: question  end   ] */
+/* [wxMaxima: answer  start ] */
+neg;
+/* [wxMaxima: answer  end   ] */
+
+
+/* [wxMaxima: input   start ] */
+plot2d(beta(3/2-a,a+1),[a,-1,3/2],[y,0,25]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: title   start ]
+Házi feladat
+   [wxMaxima: title   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Tenzorszorzás maximával: 
+tetszőleges mátrix -és vektorra
+nem lehet külső libet használni => saját logikával
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+/* Függvény definíciója a mátrixok szorzására */
+tensor_multiply(A, B) :=
+    block(
+        [result],
+        result: makelist(makelist(0, j, 1, length(B[1])), i, 1, length(A)), /* Inicializáljuk az eredményt */
+        for i: 1 thru length(A) do ( /* Az A mátrix sorainak iterálása */
+            for j: 1 thru length(B[1]) do ( /* A B mátrix oszlopainak iterálása */
+                for k: 1 thru length(A[1]) do ( /* A közös dimenzió mentén (oszlopok száma) iterálás */
+                    result[i][j]: result[i][j] + A[i][k] * B[k][j] /* A szorzás és az eredmény hozzáadása az eredmény mátrixhoz */
+                )
+            )
+        ),
+        return(result) /* Az eredmény visszaadása */
+    );
+
+/* Függvény definíciója a mátrix és vektor szorzására */
+tensor_vector_multiply(A, v) :=
+    block(
+        [result],
+        result: makelist(0, i, 1, length(A)), /* Inicializáljuk az eredmény vektort */
+        for i: 1 thru length(A) do ( /* Az A mátrix sorainak iterálása */
+            for j: 1 thru length(v) do ( /* A vektor elemek iterálása */
+                result[i]: result[i] + A[i][j] * v[j][1] /* A szorzás és az eredmény hozzáadása az eredmény vektorhoz */
+            )
+        ),
+        return(result) /* Az eredmény visszaadása */
+    );
+
+/* Függvény definíciója a vektorok szorzására */
+tensor_vector_vector_multiply(v1, v2) :=
+    block(
+        [result],
+        result: makelist(0, i, 1, length(v1)), /* Inicializáljuk az eredmény vektort */
+        for i: 1 thru length(v1) do ( /* Az első vektor elemek iterálása */
+            result[i]: v1[i][1] * v2[i][1] /* A szorzás és az eredmény hozzáadása az eredmény vektorhoz */
+        ),
+        return(result) /* Az eredmény visszaadása */
+    );
+
+"A beadott mátrixok:";
+/* Definiáljuk a mátrixokat és a vektort */
+A: matrix([1, 2, 5], [3, 4, 7], [1, 6, 2]);
+B: matrix([5, 6, 3], [7, 8, 8], [2, 1, 5]);
+v: matrix([1], [2], [5]);
+v2: matrix([2], [3], [6]);
+
+"A kiszámolt értékek:";
+"Mátrix . Mátrix";
+/* Tensorszorzás a két mátrix között */
+tensor_multiply(A, B);
+
+/* Tensorszorzás a mátrix és a vektor között */
+"Mátrix . Vektor";
+tensor_vector_multiply(A, v);
+
+/* Tensorszorzás a két vektor között */
+"Vektor . Vektor";
+result: tensor_vector_vector_multiply(v, v2)$
+sum(result[i],i,1,length(result));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Spirál animáció (a körhöz hasonlóan)
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+with_slider_draw(a,makelist(0.1*i,i,1,10),
+    /* A Fermat-spirál egyenletét használtam. */
+    makelist(parametric(a*sqrt(t)*cos(t),a*sqrt(t)*sin(t),t,0,20),i,1,13),
+    grid=true,
+    xrange= [-4,4],
+    yrange=[-4,4],
+    proportional_axes='xy),
+wxanimate_framerate=10;
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$

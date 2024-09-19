@@ -1,0 +1,162 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: subsect start ]
+Kivételkezelés
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+ertek:random(5)$
+if ertek=0 then
+    error("Az érték nem lehet nulla, nullával nem osztunk.")
+else
+    disp(1/ertek);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+warning("Ez egy figyelmeztetés");
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+h(x):=if x < 0 then throw(x) else f(x)$
+g(l):=catch(map(h,l));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+g(makelist(k-3,k,0,10));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Fájlkezelés
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+with_stdout("kimenet.txt",for i:1 thru 3 do print(ii," ",float(sin(ii))));
+printfile("kimenet.txt");
+/*system ("dir"); LINUX-on működik! */
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+sigma:[matrix([0,1],[1,0]),matrix([0,-%i],[%i,0]),matrix([1,0],[0,-1])];
+ns(n,dim):=create_list(if i=n then 1 else 0, i, 1, dim);
+save("maxparam.lisp",sigma, ns)$
+kill(all)$
+load("maxparam.lisp");
+sigma[1];
+ns(4,5);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(alll)$
+
+fileid:openw("kimenet2.txt");
+for ii:1 thru 3 do
+    printf(fileid,"~d ~t ~g ~%",ii, sin(ii))$
+close(fileid)$
+
+fileid:opena("kimenet2.txt");
+mondat:"~:(~r~) little apple~p so red and bright~% ~[where~;was~] dancing about on a tree one night...~%"$
+for ii:1 thru 2 do
+    printf(fileid, mondat, 3-ii, ii, ii-1)$
+close(fileid)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+
+fileid:openw("sin.txt")$
+for ii:0.5 step 0.5 thru 2*%pi do
+    printf(fileid, "~g ~t ~g ~%",ii, sin(ii))$
+close(fileid)$
+
+read_list("sin.txt");
+read_nested_list("sin.txt");
+read_matrix("sin.txt");
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+nthprime(N):=block(
+    n:0,
+    for ii:2 next next_prime(ii) while n<N do
+    (
+        n:n+1,
+        l:ii
+    ),
+    return(l)
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+nthprime(10);
+
+U:makelist(nthprime(k),k,1,10);
+U:primes(2,29);
+U_pro:primes(2,nthprime(10));
+U:makelist(2^k-1,k,1,20);
+
+U:setify(primes(2,nthprime(10)));
+V:setify(makelist(2^k-1,k,1,20));
+
+union(U,V);
+intersect(U,V);
+setdifference(U,V);
+symmdifference(U,V);
+
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+/*Feladat*/
+setdifference(union(U, V),intersect(U,V));
+union(setdifference(U,V),setdifference(V,U));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+li:[a,b,c]$
+
+join(li,li);
+create_list([li[i],li[i]],i,1,length(li));
+create_list([i,i],i,li);
+args(transpose(matrix(li,li)));
+create_list([i.i],i,li); /*ez a . konkatenálás*/
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+randlist:makelist(random(21)-10,k,1,100)$  /*$ jel nem irat ki ; az igen*/
+unique(randlist);
+egyedi_lista:listify(setify(randlist));
+/*setdifference(randlist,nfreq(randlist)); HÜLYESÉG!!!*/
+div23:sublist(egyedi_lista, lambda([x],mod(x,2)=0 or mod(x,3)=0));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+/*kripto*/
+string: sha256sum("jelszó");
+
+ibase : obase : 16.$
+
+oid: octets_to_oid([2A,86,48,86,0F7,0D,1,1,1]);
+oid_to_octets(oid);
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$

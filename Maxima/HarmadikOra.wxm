@@ -1,0 +1,327 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: input   start ] */
+array(tomb,3,4,5);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+tomb[3,4,5];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+tomb[0,0,0];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+tomb[3,4,6];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+tomb2:make_array(any,1,2,1);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+tomb2[1,2,1];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+tomb[0,1,0];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+tomb3[akármi]:4;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+tomb3[bármi];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+tomb3[akármi];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+array(tomb1,fixnum,2,3)$
+tomb2:make_array(any,1,2)$
+tomb3[a]:4$
+arrays;
+arrayinfo(tomb1);
+arrayinfo(tomb2);
+arrayinfo(tomb3);
+fillarray(tomb1,[1]);
+listarray(tomb1);
+fillarray(tomb2,makelist(i,i,1,10));
+listarray(tomb2);
+fillarray(tomb3,[1/10]);
+listarray(tomb3);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Halmazok
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+a:{1,2,3,4,2,3,5,1};
+a:set(1,2,3,5,2,4,3,5,1);
+a:makeset(sin(i/2*%pi),[i],[[0],[1],[2],[3],[5],[5],[6]]);
+setify([a,b,b,a,b,b,c,d,c,a,b,c,d]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+h1:{1,2,3}$h2:{2,3,4}$
+union(h1,h2);
+intersection(h1,h2);
+intersect(h1,h2);
+setdifference(h1,h2);
+union(setdifference(h1,h2),setdifference(h2,h1));
+symmdifference(h1,h2);
+cardinality(union(h1,h2));
+cartesian_product(h1,h2);
+divisors(64);
+factor(64);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Struktúrák
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+defstruct(anyag(rho,Lo,Lf,To,Tf));
+oxigen:new(anyag);
+oxigen@rho:1.429$
+oxigen@Lo:0.444$
+oxigen;
+structures;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Függvények
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+define(f(x,y,z),sin(x)*exp(y)/z);
+functions;
+fundef(f);
+remfunction(f);
+functions;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+a:makelist(10-i,i,1,10);
+sublist(a,lambda([x],x<4));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+showtime:true$
+af[i,j]:=i+j^2$
+for i:1 thru 200 do
+    for j:1 thru 200 do
+        af[i,j]$
+for i:1 thru 200 do
+    for j:1 thru 200 do
+        af[i,j]$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Blokkok
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+(a:1,
+b:2,
+c:3);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+a:12$
+b(x):=sin(x)$
+disp(fundef(b))$
+block([a],
+    label1,
+    a:read("Add meg \"a\" értékét!"),
+    if a<0 then go(label1),
+    local(b),
+    b(x):=cos(x),
+    disp(fundef(b)),
+    return(a/b(a))
+)$
+display(a);
+fundef(b);
+/* [wxMaxima: input   end   ] */
+/* [wxMaxima: question  start ] */
+<math><st>Add meg &quot;a&quot; értékét!</st><st> </st></math>
+/* [wxMaxima: question  end   ] */
+/* [wxMaxima: answer  start ] */
+23;54;
+/* [wxMaxima: answer  end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Elágazások
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+if random(10)>3 then disp("Nagyobb");
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+A:random(10);
+if A>3 then
+disp("Nagyobb:",A)
+else
+    disp("Nem nagyobb")$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+felt:random(3)$
+if felt=2 then
+    disp("2")
+elseif felt=0 then
+    disp("0")
+else
+    disp("1");
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+A:random(10)$
+if A>3 then
+    if A>8 then
+        disp("A>8")
+    else
+        disp("8>=A>3");
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+A:random(10)$
+if A>3 then
+(
+    if A>8 then
+        disp("A>8")
+)
+else
+    disp("3>=A");
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Ciklusok
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$ /*amíg teljesül*/
+i:0$
+while i<3 do
+(
+    i:i+1,
+    disp(i)
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$ /*amíg nem teljesül*/
+i:0$
+unless i>3 do
+(
+    i:i+1,
+    disp(i)
+)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+A:genmatrix(a,5,5);
+spur:0$
+for i from 1 step 1 thru matrix_size(A)[1] do
+    spur:spur+A[i,i]$
+spur;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+A:genmatrix(a,5,5);
+spur:0$
+for i thru matrix_size(A)[1] do
+    spur:spur+A[i,i]$
+spur;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+a:1.1$
+thru 10 do
+    a:a*a$
+display(a)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+i:2$
+count:0$
+do(
+    count:(count+i)*i,
+    if count > 100 then
+        return(count)
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+for i from 1.1 next i*i thru 20 do
+    display(i)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+lista:makelist(mod(x^3,7),x,0,3)$
+for i in lista do 
+    display(i)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+(h1:{4,5},h2:{6,7},H:cartesian_product(h1,h2))$
+for i in H do
+    disp(i)$
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$

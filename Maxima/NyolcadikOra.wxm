@@ -1,0 +1,135 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: input   start ] */
+load(draw)$
+draw2d(explicit(sin(x),x,-5,5),
+    file_name="szinusz",terminal='png);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+draw2d(logy=true,grid=true,explicit(exp(x),x,1,40),explicit(x^10,x,1,30));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+set_draw_defaults(xaxis=true,yaxis=true,
+    xrange=[-4,4],yrange=[-3,3],
+        axis_top=false,axis_right=false,
+            color=blue, line_width=4, terminal=png)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+draw2d(explicit(x^2,x,-3.5,3.5),file_name="negyzetes");
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+Nevek:["negyzetes","kobos","negyedfoku","otodfoku","hatodfoku"]$
+k:1$
+do(
+   draw2d(explicit(x^(k),x,-3.5,3.5),file_name=Nevek[k],terminal='png),
+    k:k+1,
+    if k > 4 then
+        return(Nevek[k])
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw2d(
+ label(["volgy",-%pi/2,-0.93]),
+    label(["csucs",%pi/2,1.05]),
+    label_alignment=center,
+    label_orientation=vertical,
+    label(["amplitudo",%pi/2-0.1,0.5]),
+    rectangle([%pi/2,0],[%pi/2,1]),
+    color=goldenrod,line_width=3,
+    explicit(sin(x),x,-3,3),
+    title="A szinuszgorbe reszei",
+    grid=true,
+    yrange=[-1,1.2],
+    user_preamble="set xzeroaxis lt -1 lw 0"
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+load(draw)$
+lead(newton1)$
+a:sin(x)$
+b:cos(x)$
+xmin:newton(a-b,x,-2,1e-10);
+xmax:newton(a-b,x,1,1e-10);
+wxdraw2d(filled_func=a,
+    fill_color=yellow,
+    explicit(b,x,xmin,xmax),
+    filled_func=false,
+    color=green,
+    line_width=2,
+    key="sin(x)",
+    explicit(a,x,-%pi,%pi),
+    color=blue,
+    key="cos(x)",
+    explicit(b,x,-%pi,%pi)
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+load(draw)$
+f(x):=exp(-(x-x0)^2/dx^2)$
+wxdraw2d(explicit(subst([x0=0,dx=1],f(x)),x,-3,3));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+load(draw)$
+f(x):=exp(-(x-x0)^2/dx^2)$
+set_draw_defaults(file_name="wavepacket",terminal=animated_gif,delay=60)$
+animated_figure:makelist(gr2d(title="Gauss-függvény",key=sconcat("x0=2,dx=",i/3),explicit(subst([x0=2,dx=i/3],f(x)),x,-10,25)),i,1,30)$
+apply(draw,animated_figure)$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(surface_hide=true,color=purple,
+    explicit(sin(x*y),x,-2,2,y,-2,2)
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(enhanced3d=true,
+    surface_hide=true,
+    color=red,
+    implicit(x^2-sin(y)=z^2,x,-2,2,y,-2,2,z,-2,2),
+    user_preamble="set ticslevel 0"
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+wxdraw3d(nticks=500, color=salmon,
+    parametric(cos(t^2),sin(t^2),t^(1/(t+1E-3)),t,0.8,5)
+);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+x(u,v):=2*(1-exp(u/(6*%pi)))*cos(u)*cos(v/2)^2$
+y(u,v):=-2*(1-exp(u/(6*%pi)))*sin(u)*cos(v/2)^2$
+z(u,v):=1-exp(u/(3*%pi))-sin(v)+exp(u/(6*%pi))*sin(v)$
+wxdraw3d(enhanced3d=true, view=[70,220],
+    parametric_surface(x(u,v),y(u,v),z(u,v),u,0,6*%pi,v,0,2*%pi),
+user_preamble="set ticslevel 0");
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$

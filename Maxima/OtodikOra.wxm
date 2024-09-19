@@ -1,0 +1,173 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: subsect start ]
+Egyenletek
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+eq:a*x^2+b*x++c;
+sol:solve(eq,x);
+x:rhs(%[1]);
+x:map(rhs,sol);
+kill(x)$
+x:subst(sol[1],x);
+solve(eq);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+x;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+eq1:3*x+2*y-z=1$
+eq2:2*x-2*y+4*z=-2$
+eq3:-x+1/2*y-z=0$
+solve([eq1,eq2,eq3],[x,y,z]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+eq:[0,0,0]$
+x:makelist(x[i],i,1,3);
+eq[1]:3*x[1]+2*x[2]-x[3]=1$
+eq[2]:2*x[1]-2*x[2]+4*x[3]=-2$
+eq[3]:-x[1]+1/2*x[2]-x[3]=0$
+solve(eq,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+solve(logcontract(log(a)+log(x-3)-log(x))=0,x);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+solve(asin(cos(3*x))*(f(x)-1));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Visszahelyettesítés
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+f(x):=a*x^2+b*x+c$
+sol:solve(f(x),x);
+s1:sol[1];
+expand(subst(s1,f(x)));
+for i in sol do
+    disp(expand(subst(i,f(x))))$
+expand(f(map(rhs,sol)));
+f(x),sol[1],fullratsimp;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Egyenletmegoldás zérushely-kereséssel
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+eq:acos(x)=atan(x)$
+eq:lhs(eq)-rhs(eq)$
+plot2d(eq,[x,-1,1])$
+solve(eq,x);
+find_root(eq,x,-%pi,%pi);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+polip:x^7-2*x^6-4*x^5-x^3+x^2+6*x+4;
+solve(polip,x);
+plot2d(polip,[x,-2,3]);
+find_root(polip,x,-2,3.3);
+allroots(polip);
+realroots(polip);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+load(mnewton)$
+mnewton(acos(x)-atan(x),x,0);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Feladatok:
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+eq:(x-1)*(x^2+x+1)=0$
+solve(eq);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+solve(logcontract(a+log(x-3)-log(x))=0,x);
+
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+eq:x=cos(x)$
+wxplot2d([lhs(eq),rhs(eq)],[x,-3,3]);
+find_root(eq,x,0,1);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+eq:acos(3*x)=2*asin(x)$
+eq:lhs(eq)-rhs(eq)$
+plot2d(eq,[x,-1,1])$
+solve(eq,x);
+find_root(eq,x,-0.5,0.5);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+eq:x+sqrt(x)+x^(1/3)+x^(1/4)=4;
+wxplot2d([lhs(eq),rhs(eq)],[x,-1,3]);
+find_root(eq,x,0,2);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+eq:max(x,2*x-2)=min(x^2-1,5-x);
+wxplot2d([lhs(eq),rhs(eq)],[x,-5,5])$
+find_root(eq,x,-2,0);
+find_root(eq,x,0,2);
+find_root(eq,x,2,4);
+
+L:[-2,0,2,4]$
+for i:1 thru length(L)-1 do
+    disp(find_root(eq,x,L[i],L[i+1]));
+
+for i:0 thru 10 do
+    for j:0 thru 10 do
+        find_root(eq,x,i,j);
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$

@@ -1,0 +1,234 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: input   start ] */
+logcontract(log(x)+log(y));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+logexpand:true;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+log(x*y);
+log(x^n);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+trigexpand(lg(4)+lg(sin(π/6))+lg(tan(π/6))+lg(sin(π/3)));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+log10(a,b):=log(b)/log(10);
+kif:log10(4)+log10(sin(%pi/6))+log10(tan(%pi/6))+log10(sin(%pi/3));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kif:(exp(x)-1)/(exp(x/2)+1);
+kif,ratsimp;
+kif,radcan;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+logkif:log((x+2)*(x-2))+log(x);
+logkif,fullratsimp;
+logkif,radcan;
+logkif,logcontract;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+kif:sqrt(2)*sqrt(3);
+radcan(kif);
+rootscontract(kif);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: title   start ]
+Programozási ismeretek
+   [wxMaxima: title   end   ] */
+
+
+/* [wxMaxima: section start ]
+Adattípusok
+   [wxMaxima: section end   ] */
+
+
+/* [wxMaxima: input   start ] */
+rationalize(0.25);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+rationalize(0.1);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Ez pedig egy hosszabb, szöveges, nem végrehajtható rész.
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+A:round(bfloat(-4.3));
+B:"Ez egy string";
+oddp(4); /*Páratlan-e?*/
+evenp(4);/*Páros-e?*/
+integerp(A);/*Egész-e*/
+nonnegintegerp(A);/*Nemnegatív egész-e?*/
+floatnump(A);
+bfloatp(A);
+numberp(B);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Sztringek
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+stringdisp:false$
+S:"Helló \"Világ\"!\\";
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+a:4;
+b:string(a);
+b+b;
+c:concat(a,a);
+/*concat("xx[",a,"]:",(expand((x+y)^3)));*/
+d:sconcat("xx[",a,"]:",expand((x+y)^3));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+A stringproc csomag parancsai:
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+stringp(b);
+charat(d,10);
+sequal(d,c);
+slength(d);
+sposition("+",d);
+ssearch("+x",d);
+d;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Konstansok
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+%pi; %e; %i;
+/*%pi:3;*/
+αβĦ;
+limit(sin(x)*cos(y),x,inf);
+limit(exp(x)*cos(x),x,inf);
+limit(x^2,x,inf);
+/*wxdraw2d(explicit(sin(x)*cos(x),x,-10,10));*/
+draw2d(explicit(sin(x)*cos(x),x,-10,10));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsect start ]
+Listák
+   [wxMaxima: subsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+lis:[1,sqrt(2),a+2,diff(sqrt(x),x)];
+lis[4];
+sqrt(lis);
+lis+2*lis;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+create_list(sqrt(p),p,1,4);
+create_list(sqrt(p),p,[1,3,2,4]);
+create_list([x,y^2],x,1,2,y,[3,2,1]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+makelist(sqrt(p),p,1,4);
+makelist(sqrt(p),p,[1,3,2,4]);
+makelist(makelist([x,y^2],x,1,2),y,[3,2,1]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+A:{a,{b,c,{d,e,d}},a};
+listify(A);
+full_listify(A);
+flatten(full_listify(A));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: subsubsect start ]
+Listaműveletek:
+   [wxMaxima: subsubsect end   ] */
+
+
+/* [wxMaxima: input   start ] */
+length(%);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+A:makelist(sin(x),x,0,%pi,%pi/10);
+lmax(A);
+lmin(A);
+append(A,[5]);
+join(A,A);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+B:makelist(n,n,5,1,-1);
+/*B:top(makelist(n,n,1,5))*/;
+pop(B);
+B;
+push(1,B);
+sort(B);
+reverse(sort(B));
+sort(B,'ordergreatp);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+kill(all)$
+R:matrix([7,8,7,2,8,3,7,4,2],[3,5,2,9,4,1,4,5,1],[a,b,c,d,e,f,g,h,i]);
+transpose(R);
+args(transpose(R));
+sort(args(transpose(R)));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+transpose(args(transpose(R))); /*ez így hülyeség*/
+sort(args(transpose(R)));
+funmake('matrix,%);
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$
